@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anubhav Tewari | Engineering Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fallback font if Google Sans Code isn't locally installed -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Apple Style Smooth Intro -->
+    <div id="intro-sequence">
+        <div class="apple-intro-text" id="apple-text-1">Anubhav Tewari.</div>
+        <div class="apple-intro-text" id="apple-text-2">Engineering Portfolio.</div>
+    </div>
+
+    <!-- Cinematic Progress HUD -->
+    <div id="scroll-hud"></div>
+
+    <!-- Deep Space Grid Background -->
+    <div id="deep-grid-bg"></div>
+
+    <!-- Abstract Shape Blurs -->
+    <div class="blur-shape shape1"></div>
+    <div class="blur-shape shape2"></div>
+    <div class="blur-shape shape3"></div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <div class="shape-blur shape-3"></div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">A<span>T</span></div>
+            <ul class="nav-links">
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#projects">Work</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="Anubhav_Tewari_Resume.pdf" class="btn-download" target="_blank">Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-in">
+            <h1 class="glitch-text" data-text="Anubhav Tewari">Anubhav Tewari</h1>
+            <h2 class="subtitle">Mechanical Design &amp; Supply Chain Analytics</h2>
+            <div class="contact-info">
+                <span>📍 Corona, CA (Open to Relocation)</span>
+                <span>📞 630-449-9263</span>
+            </div>
+            <a href="#projects" class="btn-primary">View My Work</a>
+        </div>
+    </header>
+
+    <section id="mission" class="mission section-padding slide-up">
+        <div class="container">
+            <h2 class="section-title">Mission</h2>
+            <div class="mission-card glass-panel">
+                <p>Bridging the critical gap between aesthetic industrial design and the rigorous logic of supply chain analytics. As an engineer with over 5 years optimizing automotive lifecycles, I integrate 3D prototyping with data-driven workflows (Python, Apps Script) to unblock bottlenecks, enhance product viability, and execute deployments that drive millions in direct cost savings.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects section-padding">
+        <div class="container">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="project-gallery">
+                
+                <div class="anim-wrapper">
+                    <div class="project-card glass-panel" data-project="cadillac">
+                        <img src="autonomous.png" alt="Autonomous Vehicle EV Concept" />
+                        <div class="project-info">
+                            <h3>Cadillac Sirius Interior</h3>
+                            <p>Luxury concept vehicle interior focusing on passenger ergonomics, high-end aesthetics, and digital interfaces.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anim-wrapper">
+                    <div class="project-card glass-panel" data-project="kuka">
+                        <img src="robotic.png" alt="6-DOF Industrial Arm" />
+                        <div class="project-info">
+                            <h3>Kuka Robotics 6-DOF</h3>
+                            <p>Designing a 6 D.O.F industrial arm meticulously tailored for complex manufacturing and assembly requirements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="anim-wrapper">
+                    <div class="project-card glass-panel" data-project="ti">
+                        <img src="consumer.png" alt="Smart Gaming Table Concept" />
+                        <div class="project-info">
+                            <h3>TI 500X Calculator</h3>
+                            <p>Modernistic pocket calculator concept incorporating a typewriter-interfaced mechanical MX Blue keyboard aesthetic.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE GITHUB INTEGRATION -->
+    <section id="github-code" class="code-integration section-padding">
+        <div class="container">
+            <h2 class="section-title">Open Source & Code</h2>
+            <div class="anim-wrapper">
+                <div class="github-terminal glass-panel">
+                    <div class="terminal-header">
+                        <div class="mac-buttons">
+                            <span class="close"></span>
+                            <span class="minimize"></span>
+                            <span class="maximize"></span>
+                        </div>
+                        <div class="terminal-title">~/anubhavtewari7/repositories — bash</div>
+                    </div>
+                    <div class="terminal-body" id="github-repo-container">
+                        <div class="loading-scanline">Connecting to GitHub API...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience section-padding">
+        <div class="container">
+            <h2 class="section-title">Experience Narrative</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item slide-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="timeline-header">
+                            <h3>Rivian (VW Tech)</h3>
+                            <span class="timeline-date">Sept 2025 – Present</span>
+                        </div>
+                        <h4>Prototype Analyst, Program Management</h4>
+                        <p class="narrative">At Rivian (VW Tech), my primary mission is ensuring prototype electric vehicles get the exact parts they need to be built on time, without delays. To do this, I architected live digital dashboards and Python-based automated reporting tools that sit between human suppliers and complex manufacturing data. By automating these workflows, I eliminated manual data entry, successfully resolved critical supply shortages for over 2,200 parts, and secured the on-time delivery of major prototype builds (LabCars) for 5 international OEMs. I primarily utilized Python, Google App Script, advanced supply chain analytics, and custom KPI dashboards to execute this.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item slide-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="timeline-header">
+                            <h3>Case New Holland</h3>
+                            <span class="timeline-date">May 2025 – June 2025</span>
+                        </div>
+                        <h4>Senior Lead Designer, Interior Systems</h4>
+                        <p class="narrative">For Case New Holland, I led the end-to-end redesign of the Magnum tractor's interior cabin. The goal was to aggressively improve the layout so the operator could comfortably perform their daily tasks with better ergonomics and visibility. During this process, I introduced agile 3D printing methodologies over traditional plastic tooling. My financial assessments proved this would drastically reduce material costs, shifting the brand's production strategy and securing a $3M+ budget for the next-generation iteration. I utilized SolidWorks, 3D printing farm operations, and deep financial modeling.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item slide-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="timeline-header">
+                            <h3>Ford</h3>
+                            <span class="timeline-date">Mar 2024 – Dec 2024</span>
+                        </div>
+                        <h4>Design Engineer, Interior Systems</h4>
+                        <p class="narrative">Working on next-generation electric vehicles at Ford, my focus was on structural optimization—specifically ensuring the internal seat frames were as efficient, robust, and cost-effective as possible. I applied rigorous Design for Assembly (DFMA) principles directly within complex 3D CAD platforms, ultimately cutting mass-production costs by $270,000 annually. Additionally, I overhauled the company's physical 3D-printing testing processes to drive a lab-wide scrap reduction initiative, aggressively pushing forward our corporate sustainability goals. I utilized CATIA 3DX, DFMA methodologies, and physical lab prototyping.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item slide-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content glass-panel">
+                        <div class="timeline-header">
+                            <h3>Navistar & Webasto</h3>
+                            <span class="timeline-date">Nov 2019 – Mar 2024</span>
+                        </div>
+                        <h4>Engineering Journey across Design & DFMEA</h4>
+                        <p class="narrative">My engineering journey began with intense cooperative work leading aerodynamic drafting and production design for commercial and automotive leaders. At Webasto, I ran complex CAD models to perfect latch designs for automotive roof systems. Growing into a role at Navistar, I transitioned to applying rigid Six Sigma methodologies (DFSS) to validate physical designs that were ready for mass production. This combination of hands-on supplier engagement and deep 3D modeling expertise built the very foundation of my data-driven engineering approach. I utilized CATIA, Six Sigma (DFSS), Aerodynamic Modeling, and Tier-1 Supplier Negotiations.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills section-padding slide-up">
+        <div class="container">
+            <h2 class="section-title">Core Competencies</h2>
+            <div class="skills-grid">
+                
+                <div class="anim-wrapper">
+                    <div class="skill-category glass-panel hover-glow">
+                        <div class="category-icon">⚙️</div>
+                        <h3>Supply Chain</h3>
+                        <p>Vendor Management, DFM/DFMA, Injection Molding, 3D Printing, Procurement, POs, Shipments, RFQs, BOMs, MPL, ECO.</p>
+                    </div>
+                </div>
+
+                <div class="anim-wrapper">
+                    <div class="skill-category glass-panel hover-glow">
+                        <div class="category-icon">📊</div>
+                        <h3>Data & Automation</h3>
+                        <p>Python, Google App Script, JavaScript, Power BI, Tableau, MATLAB, Minitab 18, Jira, Confluence.</p>
+                    </div>
+                </div>
+
+                <div class="anim-wrapper">
+                    <div class="skill-category glass-panel hover-glow">
+                        <div class="category-icon">🛠️</div>
+                        <h3>Design & CAD</h3>
+                        <p>SolidWorks, CATIA V5, 3DX, Siemens NX, Blender, Keyshot, Concept Design, Surface Modeling, Rendering.</p>
+                    </div>
+                </div>
+
+                <div class="anim-wrapper">
+                    <div class="skill-category glass-panel hover-glow">
+                        <div class="category-icon">💻</div>
+                        <h3>Product Lifecycle</h3>
+                        <p>Enovia PLM, Teamcenter PLM, Windchill, Lifecycle Analysis, DFSS, GD&T, 2D Drawings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education section-padding">
+        <div class="container">
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="edu-grid">
+                
+                <div class="anim-wrapper">
+                    <div class="edu-card glass-panel slide-up">
+                        <div class="edu-header">
+                            <h3>MBA, Data Analytics</h3>
+                            <span class="edu-date">June 2026</span>
+                        </div>
+                        <h4>Westcliff University | Irvine, CA</h4>
+                        <p class="gpa">GPA: 4.00</p>
+                        <p class="concentration">Concentration: Program Management</p>
+                    </div>
+                </div>
+
+                <div class="anim-wrapper">
+                    <div class="edu-card glass-panel slide-up">
+                        <div class="edu-header">
+                            <h3>BS, Mechanical Engineering</h3>
+                            <span class="edu-date">Dec 2021</span>
+                        </div>
+                        <h4>Kettering University | Flint, MI</h4>
+                        <p class="gpa">GPA: 3.49</p>
+                        <p class="concentration">Concentration: Automotive Engineering Design<br>Minor: Electrical Engineering</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <h3 class="subsection-title mt-4">Certifications</h3>
+            <ul class="cert-list slide-up">
+                <li class="glass-panel">
+                    <span class="cert-name">Investment Banking Job Simulation</span>
+                    <span class="cert-org">- J.P. Morgan</span>
+                    <span class="cert-date">(Oct 2025)</span>
+                </li>
+                <li class="glass-panel">
+                    <span class="cert-name">Analyze Apple's Stock with Bloomberg Terminal</span>
+                    <span class="cert-org">- Bloomberg</span>
+                    <span class="cert-date">(Oct 2025)</span>
+                </li>
+                <li class="glass-panel">
+                    <span class="cert-name">Business Analysis & Process Management</span>
+                    <span class="cert-org">- Coursera</span>
+                    <span class="cert-date">(Oct 2025)</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h2>Let's build the future together.</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/anubhavtewari7/" target="_blank" class="btn-secondary">LinkedIn</a>
+                <a href="https://www.behance.net/anubhavtewari7" target="_blank" class="btn-secondary">Behance</a>
+                <a href="mailto:anubhavtewari7@gmail.com" class="btn-secondary">Email Me</a>
+            </div>
+            <p class="copyright">© 2026 Anubhav Tewari. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-modal">&times;</span>
+            <div id="modal-body">
+                <!-- dynamic content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Fluid Smooth Scrolling (Lenis) -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script src="cinematic-intro.js?v=9"></script>        <script src="script.js"></script>
+</body>
+</html>

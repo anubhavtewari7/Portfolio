@@ -1,0 +1,15 @@
+# User Utility Scripts
+extract.py
+crop.py
+dummy-resume.pdf
+
+# Unused/Old experiments
+3d-intro.js
+framer-intro.js
+cinematic-drift.png
+
+# Antigravity/Dev files
+.gemini/
+.DS_Store
+node_modules/
+.env
