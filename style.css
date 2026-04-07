@@ -981,14 +981,25 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   PRINT MODE (For Professional PDF Export)
+   AGGRESSIVE PRINT MODE (For Professional PDF Export)
    ========================================================================== */
 @media print {
     :root {
-        --bg-dark: #ffffff;
-        --text-main: #000000;
-        --text-muted: #555555;
-        --accent-cyan: #005f6b; /* Darker for paper legibility */
+        --bg-dark: #ffffff !important;
+        --text-main: #000000 !important;
+        --text-muted: #444444 !important;
+        --accent-cyan: #006064 !important; /* Dark teal for readability */
+    }
+
+    /* Force height and overflow reset - CRITICAL for multi-page PDF */
+    html, body {
+        height: auto !important;
+        overflow: visible !important;
+        position: relative !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     * {
@@ -997,130 +1008,164 @@ h1, h2, h3, h4 {
         color-adjust: exact !important;
         transition: none !important;
         animation: none !important;
-    }
-
-    body {
-        background: #ffffff !important;
-        color: #000000 !important;
-        font-size: 11pt;
-    }
-
-    /* Hide UI junk and interactive elements */
-    .navbar, 
-    #cursor-dot, 
-    #cursor-ring, 
-    #scroll-hud, 
-    #deep-grid-bg, 
-    .shape-blur,
-    .btn-primary, 
-    .btn-secondary,
-    .social-links,
-    .intro-overlay, /* Crucial: ensures intro doesn't block the PDF */
-    .hero-overlay {
-        display: none !important;
-    }
-
-    /* Reset Section Spacing for Paper */
-    .section-padding {
-        padding: 30px 0 !important;
-    }
-
-    /* Unroll GSAP animations */
-    .fade-in, .slide-up, .repo-card, .timeline-item, .skill-category, .edu-card {
+        /* Force all GSAP/hidden elements to be visible */
         opacity: 1 !important;
-        transform: none !important;
         visibility: visible !important;
-    }
-
-    /* Glassmorphism -> Clean Document Panels */
-    .glass-panel {
-        background: #fdfdfd !important;
-        border: 1px solid #eeeeee !important;
-        border-radius: 12px !important;
+        transform: none !important;
         box-shadow: none !important;
-        color: #000 !important;
-        padding: 20px !important;
-        page-break-inside: avoid;
-        margin-bottom: 20px !important;
+        filter: none !important;
         backdrop-filter: none !important;
     }
 
-    .glass-panel::before {
+    /* Hide ALL overlays and interactive junk */
+    .navbar, 
+    #intro-sequence, /* Fixed ID from index.html */
+    #scroll-hud, 
+    #deep-grid-bg, 
+    #cursor-dot, 
+    #cursor-ring,
+    .blur-shape,
+    .shape-blur,
+    .btn-primary, 
+    .btn-secondary,
+    .btn-download,
+    .social-links,
+    .hero-overlay,
+    .hero::before,
+    .scroll-indicator,
+    .mouse {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Typography Adjustments */
+    /* Standardize the Hero for a professional header */
+    .hero {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 60px 0 !important;
+        background: #ffffff !important;
+        text-align: left !important;
+        display: block !important;
+    }
+
+    .hero-content {
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
     .glitch-text {
-        font-size: 32pt !important;
-        color: #000 !important;
-        text-shadow: none !important;
+        font-size: 36pt !important;
+        line-height: 1.2 !important;
+        color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
+        background: none !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0 !important;
+        margin-bottom: 5pt !important;
     }
-    
-    .glitch-text::before, 
-    .glitch-text::after {
-        display: none !important;
-    }
+
+    .glitch-text::before, .glitch-text::after { display: none !important; }
 
     .subtitle {
+        font-size: 16pt !important;
         color: var(--accent-cyan) !important;
-        font-size: 14pt !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 20pt !important;
+        display: block !important;
     }
+
+    .contact-info {
+        justify-content: flex-start !important;
+        margin-bottom: 40pt !important;
+        color: #333 !important;
+        font-size: 10pt !important;
+    }
+
+    /* Section Layouts */
+    .section-padding { padding: 40px 0 !important; }
 
     .section-title {
-        color: #000 !important;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        margin-bottom: 30px !important;
+        font-size: 20pt !important;
+        color: #000000 !important;
+        margin-bottom: 20pt !important;
+        border-bottom: 2px solid #eeeeee !important;
+        width: 100% !important;
+        display: block !important;
+        text-align: left !important;
     }
 
-    /* GitHub Terminal Print Styling */
+    .section-title::after { display: none !important; }
+
+    /* Cleanup Glass Panels to Simple Boxes */
+    .glass-panel {
+        background: #ffffff !important;
+        border: 1px solid #dddddd !important;
+        border-radius: 8px !important;
+        padding: 1.5rem !important;
+        margin-bottom: 20pt !important;
+        page-break-inside: avoid !important;
+    }
+
+    .glass-panel::before { display: none !important; }
+
+    /* Project Cards specifically */
+    .project-card {
+        height: auto !important;
+        border: 1px solid #eee !important;
+        margin-bottom: 30pt !important;
+    }
+
+    .project-card img {
+        height: 200px !important;
+        object-fit: cover !important;
+        border-radius: 8px 8px 0 0 !important;
+    }
+
+    /* Experience Narrative Fix */
+    .timeline { padding-left: 0 !important; }
+    .timeline::before { display: none !important; }
+    .timeline-item { padding-left: 0 !important; margin-bottom: 30pt !important; }
+    .timeline-dot { display: none !important; }
+
+    /* Fix the GitHub Terminal Print Visibility */
     .github-terminal {
-        background: #f8f9fa !important;
-        border: 1px solid #ddd !important;
+        background: #fdfdfd !important;
+        border: 1px solid #cccccc !important;
         color: #333 !important;
-        box-shadow: none !important;
     }
 
-    .terminal-header {
-        background: #eee !important;
-        border-bottom: 1px solid #ddd !important;
-    }
-
-    .terminal-title {
-        color: #666 !important;
-    }
+    .terminal-header { background: #f0f0f0 !important; border-bottom: 1px solid #ccc !important; }
+    .terminal-dot { border: 1px solid #aaa !important; }
+    .terminal-title { color: #555 !important; }
 
     .liquid-box {
-        background: #f0f7f8 !important;
-        border: 1px solid #c8dcdf !important;
-        color: #1a1a1a !important;
-        box-shadow: none !important;
+        background: #f7fbfc !important;
+        border: 1px solid #b2ebf2 !important;
+        color: #000 !important;
+        padding: 15px !important;
+        margin-top: 10px !important;
         font-style: normal !important;
     }
 
-    .liquid-box::before {
-        display: none !important;
-    }
+    .liquid-box::before { display: none !important; }
 
-    .repo-card h3 a {
-        color: var(--accent-cyan) !important;
-        text-decoration: underline;
-    }
-
-    /* Footer / Links */
-    .footer h2 {
-        font-size: 18pt !important;
-    }
-
-    /* Ensure links show their URLs in the PDF */
+    /* Show URLs for all links automatically */
     a[href^="http"]::after {
         content: " (" attr(href) ")";
         font-size: 8pt;
-        color: #888;
+        color: #777;
     }
 
-    /* Page Breaks */
-    h2, h3 { page-break-after: avoid; }
+    /* Control Paging */
+    h2, h3 { page-break-after: avoid !important; }
+    img { max-width: 100% !important; page-break-inside: avoid !important; }
     .container { width: 100% !important; max-width: none !important; }
+    
+    /* Ensure no text is white/hidden */
+    p, span, li, h1, h2, h3, h4, div { color: inherit !important; }
 }

@@ -394,3 +394,34 @@ window.initPortfolioAnimations = () => {
     }
 
 };
+
+// Aggressive Print Engine Patch
+window.addEventListener('beforeprint', () => {
+    // 1. Kill the complex scrolling engine
+    document.documentElement.style.overflow = 'visible';
+    document.body.style.overflow = 'visible';
+    document.body.style.height = 'auto';
+    
+    // 2. Kill the intro overlay and cursor immediately
+    const intro = document.getElementById('intro-sequence');
+    if (intro) intro.style.display = 'none';
+    
+    // 3. Clear all GSAP-applied hidden states
+    gsap.set("*", { 
+        clearProps: "all", 
+        opacity: 1, 
+        visibility: "visible", 
+        transform: "none",
+        overwrite: true 
+    });
+    
+    // 4. Temporarily disable ScrollTrigger to prevent it fighting the print engine
+    ScrollTrigger.getAll().forEach(t => t.disable(false, true));
+});
+
+window.addEventListener('afterprint', () => {
+    // Restore the site after print dialog closes
+    ScrollTrigger.getAll().forEach(t => t.enable());
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+});
