@@ -981,34 +981,44 @@ h1, h2, h3, h4 {
 }
 
 /* ==========================================================================
-   AGGRESSIVE PRINT MODE (For Professional PDF Export)
+   NUCLEAR PRINT MODE (Guaranteed Multi-Page PDF)
    ========================================================================== */
 @media print {
+    /* Step 1: Force reset the body and root */
     :root {
         --bg-dark: #ffffff !important;
         --text-main: #000000 !important;
         --text-muted: #444444 !important;
-        --accent-cyan: #006064 !important; /* Dark teal for readability */
+        --accent-cyan: #006064 !important;
     }
 
-    /* Force height and overflow reset - CRITICAL for multi-page PDF */
-    html, body {
-        height: auto !important;
-        overflow: visible !important;
-        position: relative !important;
+    /* Step 2: Tell the browser to IGNORE EVERYTHING except the content wrapper */
+    body > *:not(#portfolio-content) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        position: absolute !important;
+        top: -9999px !important;
+    }
+
+    #portfolio-content {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         background: #ffffff !important;
         color: #000000 !important;
-        margin: 0 !important;
-        padding: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+        position: static !important;
     }
 
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        color-adjust: exact !important;
         transition: none !important;
         animation: none !important;
-        /* Force all GSAP/hidden elements to be visible */
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
@@ -1017,155 +1027,77 @@ h1, h2, h3, h4 {
         backdrop-filter: none !important;
     }
 
-    /* Hide ALL overlays and interactive junk */
-    .navbar, 
-    #intro-sequence, /* Fixed ID from index.html */
-    #scroll-hud, 
-    #deep-grid-bg, 
-    #cursor-dot, 
-    #cursor-ring,
-    .blur-shape,
-    .shape-blur,
-    .btn-primary, 
-    .btn-secondary,
-    .btn-download,
-    .social-links,
-    .hero-overlay,
-    .hero::before,
-    .scroll-indicator,
-    .mouse {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        height: 0 !important;
-        width: 0 !important;
+    html, body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        height: auto !important;
+        overflow: visible !important;
         margin: 0 !important;
         padding: 0 !important;
     }
 
-    /* Standardize the Hero for a professional header */
+    /* Step 3: Clean up inner UI elements */
+    .navbar { display: none !important; }
+    
     .hero {
         height: auto !important;
         min-height: auto !important;
         padding: 60px 0 !important;
-        background: #ffffff !important;
+        background: none !important;
         text-align: left !important;
-        display: block !important;
     }
 
-    .hero-content {
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
+    .hero-overlay { display: none !important; }
 
     .glitch-text {
         font-size: 36pt !important;
-        line-height: 1.2 !important;
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
+        color: #000 !important;
         background: none !important;
+        -webkit-text-fill-color: #000 !important;
         text-transform: uppercase !important;
         letter-spacing: 0 !important;
-        margin-bottom: 5pt !important;
     }
-
-    .glitch-text::before, .glitch-text::after { display: none !important; }
 
     .subtitle {
         font-size: 16pt !important;
-        color: var(--accent-cyan) !important;
-        margin-bottom: 20pt !important;
+        color: #444 !important;
+        margin-bottom: 30pt !important;
         display: block !important;
     }
 
-    .contact-info {
-        justify-content: flex-start !important;
-        margin-bottom: 40pt !important;
-        color: #333 !important;
-        font-size: 10pt !important;
-    }
-
-    /* Section Layouts */
-    .section-padding { padding: 40px 0 !important; }
-
+    .section-padding { padding: 30px 0 !important; }
+    
     .section-title {
         font-size: 20pt !important;
-        color: #000000 !important;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 5pt;
         margin-bottom: 20pt !important;
-        border-bottom: 2px solid #eeeeee !important;
-        width: 100% !important;
-        display: block !important;
-        text-align: left !important;
+        page-break-after: avoid !important;
     }
 
-    .section-title::after { display: none !important; }
-
-    /* Cleanup Glass Panels to Simple Boxes */
     .glass-panel {
         background: #ffffff !important;
-        border: 1px solid #dddddd !important;
-        border-radius: 8px !important;
-        padding: 1.5rem !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0 !important;
+        padding: 20pt !important;
         margin-bottom: 20pt !important;
         page-break-inside: avoid !important;
+        box-shadow: none !important;
     }
 
-    .glass-panel::before { display: none !important; }
+    .project-card { height: auto !important; border: 1px solid #ddd !important; }
+    .project-card img { height: 200px !important; object-fit: cover !important; }
+    
+    .github-terminal { background: #f9f9f9 !important; border: 1px solid #ccc !important; color: #000 !important; }
+    .terminal-header { background: #eee !important; border-bottom: 1px solid #ccc !important; }
+    .liquid-box { background: #f0f7f8 !important; border-left: 4px solid #00acc1 !important; color: #000 !important; }
 
-    /* Project Cards specifically */
-    .project-card {
-        height: auto !important;
-        border: 1px solid #eee !important;
-        margin-bottom: 30pt !important;
-    }
-
-    .project-card img {
-        height: 200px !important;
-        object-fit: cover !important;
-        border-radius: 8px 8px 0 0 !important;
-    }
-
-    /* Experience Narrative Fix */
-    .timeline { padding-left: 0 !important; }
-    .timeline::before { display: none !important; }
-    .timeline-item { padding-left: 0 !important; margin-bottom: 30pt !important; }
-    .timeline-dot { display: none !important; }
-
-    /* Fix the GitHub Terminal Print Visibility */
-    .github-terminal {
-        background: #fdfdfd !important;
-        border: 1px solid #cccccc !important;
-        color: #333 !important;
-    }
-
-    .terminal-header { background: #f0f0f0 !important; border-bottom: 1px solid #ccc !important; }
-    .terminal-dot { border: 1px solid #aaa !important; }
-    .terminal-title { color: #555 !important; }
-
-    .liquid-box {
-        background: #f7fbfc !important;
-        border: 1px solid #b2ebf2 !important;
-        color: #000 !important;
-        padding: 15px !important;
-        margin-top: 10px !important;
-        font-style: normal !important;
-    }
-
-    .liquid-box::before { display: none !important; }
-
-    /* Show URLs for all links automatically */
     a[href^="http"]::after {
         content: " (" attr(href) ")";
         font-size: 8pt;
-        color: #777;
+        color: #666;
     }
 
-    /* Control Paging */
     h2, h3 { page-break-after: avoid !important; }
-    img { max-width: 100% !important; page-break-inside: avoid !important; }
     .container { width: 100% !important; max-width: none !important; }
-    
-    /* Ensure no text is white/hidden */
-    p, span, li, h1, h2, h3, h4, div { color: inherit !important; }
 }

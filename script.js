@@ -395,33 +395,34 @@ window.initPortfolioAnimations = () => {
 
 };
 
-// Aggressive Print Engine Patch
+// Aggressive Print Engine Patch (Nuclear Edition)
 window.addEventListener('beforeprint', () => {
-    // 1. Kill the complex scrolling engine
-    document.documentElement.style.overflow = 'visible';
-    document.body.style.overflow = 'visible';
-    document.body.style.height = 'auto';
+    // 1. Force everything to be visible by stripping GSAP inline styles
+    const content = document.getElementById('portfolio-content');
+    if (content) {
+        // Recursive scrub: Clears all inline styles that might hide content
+        const allElements = content.querySelectorAll('*');
+        allElements.forEach(el => {
+            el.style.opacity = '';
+            el.style.transform = '';
+            el.style.visibility = '';
+            el.style.display = '';
+            el.style.filter = '';
+            el.style.backdropFilter = '';
+        });
+        content.style.opacity = '1';
+        content.style.visibility = 'visible';
+        content.style.display = 'block';
+    }
     
-    // 2. Kill the intro overlay and cursor immediately
-    const intro = document.getElementById('intro-sequence');
-    if (intro) intro.style.display = 'none';
-    
-    // 3. Clear all GSAP-applied hidden states
-    gsap.set("*", { 
-        clearProps: "all", 
-        opacity: 1, 
-        visibility: "visible", 
-        transform: "none",
-        overwrite: true 
-    });
-    
-    // 4. Temporarily disable ScrollTrigger to prevent it fighting the print engine
+    // 2. Disable ScrollTrigger instantly
     ScrollTrigger.getAll().forEach(t => t.disable(false, true));
+    
+    // 3. Force scroll to top so the print engine captures from the start
+    window.scrollTo(0, 0);
 });
 
 window.addEventListener('afterprint', () => {
-    // Restore the site after print dialog closes
+    // Re-enable everything after print dialog closes
     ScrollTrigger.getAll().forEach(t => t.enable());
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
 });
