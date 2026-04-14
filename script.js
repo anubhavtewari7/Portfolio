@@ -350,14 +350,24 @@ window.initPortfolioAnimations = () => {
         .then(res => res.json())
         .then(repos => {
             githubContainer.innerHTML = ""; 
-            // Filter out fluffydoggohere and take top 3
+            // Filter out fluffydoggohere and display all projects
             repos
               .filter(repo => repo.name !== 'fluffydoggohere')
-              .slice(0, 3)
               .forEach(repo => {
                 const isBuildScript = repo.name === 'build-script-ai';
+                const isHandtracking = repo.name === 'Handtracking-Project';
+                const isOverwatch = repo.name === 'project-overwatch';
+
                 const displayName = isBuildScript ? 'BuildScript-AI App' : repo.name;
-                const displayDesc = isBuildScript ? 'Your everyday AI mechanic in your pocket. The answer to all your car related problems right here in the palm of your hand.' : (repo.description || 'Open source engineering project.');
+                
+                let displayDesc = repo.description || 'Open source engineering project.';
+                if (isBuildScript) {
+                    displayDesc = 'Your everyday AI mechanic in your pocket. The answer to all your car related problems right here in the palm of your hand.';
+                } else if (isHandtracking) {
+                    displayDesc = 'Advanced gesture-controlled interface for system navigation and spatial interaction using computer vision.';
+                } else if (isOverwatch) {
+                    displayDesc = 'Stark Industries inspired cyber-security radar and active defense sentry for network monitoring.';
+                }
                 
                 const langColor = repo.language === 'TypeScript' ? '#3178c6' : 
                                   repo.language === 'JavaScript' ? '#f1e05a' : 

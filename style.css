@@ -870,6 +870,20 @@ h1, h2, h3, h4 {
 .terminal-body {
     padding: 30px;
     min-height: 200px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar for Terminal */
+.terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+.terminal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+.terminal-body::-webkit-scrollbar-thumb {
+    background: var(--accent-cyan);
+    border-radius: 10px;
 }
 
 .repo-card {
