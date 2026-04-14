@@ -373,9 +373,9 @@ window.initPortfolioAnimations = () => {
                                   repo.language === 'JavaScript' ? '#f1e05a' : 
                                   repo.language === 'Python' ? '#3572A5' : '#8b949e';
                 const html = `
-                    <div class="repo-card ${isBuildScript ? 'featured-repo' : ''}">
+                    <div class="repo-card featured-repo">
                         <h3><a href="${repo.html_url}" target="_blank">${displayName}</a></h3>
-                        <div class="${isBuildScript ? 'liquid-box' : 'repo-desc'}">${displayDesc}</div>
+                        <div class="liquid-box">${displayDesc}</div>
                         <div class="repo-meta">
                             ${repo.language ? `<span><div class="language-color" style="background: ${langColor}"></div> ${repo.language}</span>` : ''}
                             <span>⭐ ${repo.stargazers_count}</span>
