@@ -366,7 +366,7 @@ window.initPortfolioAnimations = () => {
                 } else if (isHandtracking) {
                     displayDesc = 'Advanced gesture-controlled interface for system navigation and spatial interaction using computer vision.';
                 } else if (isOverwatch) {
-                    displayDesc = 'Stark Industries inspired cyber-security radar and active defense sentry for network monitoring.';
+                    displayDesc = 'Advanced cyber-security radar and active defense sentry for real-time network monitoring.';
                 }
                 
                 const langColor = repo.language === 'TypeScript' ? '#3178c6' : 
